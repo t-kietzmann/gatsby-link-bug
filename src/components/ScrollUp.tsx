@@ -8,22 +8,25 @@ const ScrollUp = () => {
       behavior: 'smooth',
     });
   };
+
   useEffect(() => {
-    window.addEventListener('scroll', () => {
+    const handleScroll = () => {
       if (window.scrollY > 400) {
         setshowTopButton(true);
       } else {
         setshowTopButton(false);
       }
-      return () => window.removeEventListener(`scroll`, goToTop);
-    });
+    };
+    window.addEventListener('scroll', handleScroll);
+
+    return () => window.removeEventListener(`scroll`, handleScroll);
   }, []);
   return (
     <>
       {showTopButton && (
-        <button onClick={goToTop} className='fixed bottom-5 right-0'>
-          UP
-        </button>
+        <span onClick={goToTop} className='fixed bottom-5 right-0 bg-red-400'>
+          UP2
+        </span>
       )}
     </>
   );
